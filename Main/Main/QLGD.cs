@@ -49,7 +49,22 @@ namespace Main
             dataGridView1.DataSource = ct.Show(cboTenMon.Text);
             MessageBox.Show("Xóa dữ liệu thành công");
         }
-
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            for (int i = 0; i < cboTenMon.Items.Count; i++)
+            {
+                cboTenMon.SelectedIndex = i;
+                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
+            }           
+            for (int i = 0; i < cboTenGV.Items.Count; i++)
+            {
+                cboTenGV.SelectedIndex = i;
+                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
+            }
+            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+        }
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (selection == 1)
@@ -88,6 +103,21 @@ namespace Main
             cboTenMon.Enabled = cboTenGV.Enabled = false;
         }
 
+		        public void KhoiTao()
+        {
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = false;
+            dtpNgaySinhGV.Enabled = false;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = false;
+        }
+
+        public void Mo()
+        {
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = true;
+            dtpNgaySinhGV.Enabled = true;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+        }
         private void btnTim_Click(object sender, EventArgs e)
         {
             if (cboTenLop.Text != "")
