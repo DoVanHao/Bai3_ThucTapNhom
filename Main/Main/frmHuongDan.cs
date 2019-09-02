@@ -37,34 +37,6 @@ private void trViewGioiThieu_AfterSelect(object sender, TreeViewEventArgs e)
                     Image img = Image.FromFile(@"b2 dang nhap.png");
                     pictureBox1.BackgroundImage = img;
                 }
-                else
-                    if (e.Node.Name == "gtManHinhChinh")
-                    {
-                        GetFileAll("PhanMain.txt");
-                        Image img = Image.FromFile(@"b2 main.png");
-                        pictureBox1.BackgroundImage = img;
-                    }
-                    else
-                        if (e.Node.Name == "gtGiaoVien")
-                        {
-                            GetFileAll("PhanQuanLyGiaoVien.txt");
-                            Image img = Image.FromFile(@"b2 giao vien.png");
-                            pictureBox1.BackgroundImage = img;
-                        }
-                        else
-                            if (e.Node.Name == "gtHocSinh")
-                            {
-                                GetFileAll("PhanQuanLyHocSinh.txt");
-                                Image img = Image.FromFile(@"b2 hoc sinh.png");
-                                pictureBox1.BackgroundImage = img;
-                            }
-                            else
-                                if (e.Node.Name == "gtQLGD")
-                                {
-                                    GetFileAll("PhanQuanLyQLGD.txt");
-                                    Image img = Image.FromFile(@"b2 ttgd.png");
-                                    pictureBox1.BackgroundImage = img;
-                                }
         }
   
 

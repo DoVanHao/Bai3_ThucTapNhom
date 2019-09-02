@@ -10,83 +10,101 @@ namespace Main
 {
     public class GiaoVien
     {
-        string strcon = @"Data Source=HOA_LONG\SQLEXPRESS; Initial Catalog=TruongTHPT; Integrated Security=true;";
-        public DataTable Show()
+        public Giao_Vien()
         {
-            string sql = "select gv.MaGV, gv.HoTen, gv.GT, gv.NgaySinh, gv.DiaChi, gv.Luong, gv.SDT, mh.TenMon from tblGiaoVien gv, tblMonHoc mh where gv.MaMon = mh.MaMon";
-            DataTable dt = new DataTable();
-            SqlConnection con = new SqlConnection(strcon);
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
-            da.Fill(dt);
-            con.Close();
-            da.Dispose();
-            return dt;
+            InitializeComponent();
         }
 
-        //Sua 
-        public void Sua_GV(string MaGV, string HoTen, string GT, string NgaySinh, string DiaChi, string SDT, string Luong, string Mon)
+        GiaoVien gv = new GiaoVien();
+        int chon;
+        TimKiem tk = new TimKiem();
+
+
+        public void KhoiTao()
         {
-            string sql = "Sua_GV";
-            SqlConnection con = new SqlConnection(strcon);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@HoTen", HoTen);
-            cmd.Parameters.AddWithValue("@GT", GT);
-            cmd.Parameters.AddWithValue("@NgaySinh", NgaySinh);
-            cmd.Parameters.AddWithValue("@DiaChi", DiaChi);
-            cmd.Parameters.AddWithValue("@SDT", SDT);
-            cmd.Parameters.AddWithValue("@Luong", Luong);
-            cmd.Parameters.AddWithValue("@MaMon", Mon);
-            cmd.Parameters.AddWithValue("@MaGV", MaGV);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            con.Close();
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = false;
+            dtpNgaySinhGV.Enabled = false;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = false;
         }
 
-        //Xoa
-        public void Xoa_GV(string MaGV)
+        public void Mo()
         {
-            string sql = "Xoa_GV";
-            SqlConnection con = new SqlConnection(strcon);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@MaGV", MaGV);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            con.Close();
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = true;
+            dtpNgaySinhGV.Enabled = true;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
         }
 
-        public DataTable LayThongTinMonHoc()
+        public void SetNull()
         {
-            string sql = "SELECT * FROM tblMonHoc";
-            SqlConnection con = new SqlConnection(strcon);
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
-            da.Fill(dt);
-            return dt;
+            txtMaGV.Text = txtHoTenGV.Text = txtDiaChi.Text = txtLuong.Text = cbGTGV.Text = cbMonHoc.Text = cbTKGV.Text = txtTKGV.Text = txtSDT.Text = "";
+            dtpNgaySinhGV.Text = DateTime.Now.ToShortDateString();
         }
 
-        // Thêm giáo viên
-        public void ThemGiaoVien(string HoTen, string GT, DateTime NgaySinh, string DiaChi, string SDT, string Luong, string MaMon)
+        private void Giao_Vien_Load(object sender, EventArgs e)
         {
-            string sql = "ADD_GV";
-            SqlConnection con = new SqlConnection(strcon);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@HoTen", HoTen);
-            cmd.Parameters.AddWithValue("@GT", GT);
-            cmd.Parameters.AddWithValue("@NgaySinh", (NgaySinh));
-            cmd.Parameters.AddWithValue("@DiaChi", DiaChi);
-            cmd.Parameters.AddWithValue("@SDT", SDT);
-            cmd.Parameters.AddWithValue("@Luong", Luong);
-            cmd.Parameters.AddWithValue("@MaMon", MaMon);
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            con.Close();
+            KhoiTao();
+            dgvGiaoVien.DataSource = gv.Show();
+
+            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
+            cbMonHoc.DisplayMember = "TenMon";
+            cbMonHoc.ValueMember = "MaMon";
+            cbMonHoc.SelectedValue = "MaMon";
+            chon = 0;
+        }
+
+        private void dgvGiaoVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaGV.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtHoTenGV.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[1].Value.ToString();
+            cbGTGV.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpNgaySinhGV.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtDiaChi.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtSDT.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtLuong.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[6].Value.ToString();
+            cbMonHoc.Text = dgvGiaoVien.Rows[e.RowIndex].Cells[7].Value.ToString();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Bạn muốn xóa Giáo viên này?", "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                gv.Xoa_GV(txtMaGV.Text);
+                MessageBox.Show("Xóa thành công!");
+                Giao_Vien_Load(sender, e);
+                SetNull();
+            }
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            Mo();
+            SetNull();
+            txtTKGV.Enabled = cbTKGV.Enabled = true;
+            chon = 1;
+        }
+
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            Giao_Vien_Load(sender, e);
+            SetNull();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            Mo();
+            SetNull();
+            chon = 2;
+        }
+
+        private void txtTKGV_TextChanged(object sender, EventArgs e)
+        {
+            if (cbTKGV.Text == "Mã")
+                dgvGiaoVien.DataSource = tk.TK_Ma_GiaoVien(txtTKGV.Text);
+            else
+                dgvGiaoVien.DataSource = tk.TKTenGiaoVien(txtTKGV.Text);
         }
     }
 }
