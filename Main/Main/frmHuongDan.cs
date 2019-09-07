@@ -42,8 +42,8 @@ private void trViewGioiThieu_AfterSelect(object sender, TreeViewEventArgs e)
 
         private void frmHuongDan_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form1 f = new Form1();
-            f.Show();
+            Form1 huongdan = new Form1();
+            huongdan.Show();
         }
 
       

@@ -43,9 +43,9 @@ namespace BUS
         public void SuaCTGD(string malop, string mamon, string magv, DateTime ngayday, int tiet)
         {
             string sql = "SuaCTGD";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@malop", malop);
@@ -56,7 +56,7 @@ namespace BUS
 
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-            con.Close();
+            conn.Close();
         }
 
         //Xoa
