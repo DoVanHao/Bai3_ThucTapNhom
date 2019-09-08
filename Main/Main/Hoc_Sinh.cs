@@ -76,7 +76,28 @@ namespace Main
                 SetNull();
             }
         }
+		
+		
+		private void btnSua_HS_Click(object sender, EventArgs e)
+        {
+            Mo();
+            SetNull();
+            txtMa_HS.Enabled = false;
+            chon = 1;
+        }
 
+        private void btnXoa_HS_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Bạn muốn xóa học sinh này?", "THÔNG BÁO", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                hs.Xoa_HS(txtMa_HS.Text);
+                MessageBox.Show("Xóa thành công!");
+                Hoc_Sinh_Load (sender, e);
+                SetNull();
+            }
+        }
+		
+		
         private void btnLuu_HS_Click(object sender, EventArgs e)
         {
             if(chon ==1)
