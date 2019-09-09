@@ -71,8 +71,7 @@
             this.treeView1.Size = new System.Drawing.Size(172, 424);
             this.treeView1.TabIndex = 1;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trViewGioiThieu_AfterSelect);
-            // 
-            // pictureBox1
+            //   // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -91,21 +90,6 @@
             this.txtGioiThieu.Size = new System.Drawing.Size(546, 147);
             this.txtGioiThieu.TabIndex = 3;
             // 
-            // frmHuongDan
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 424);
-            this.Controls.Add(this.txtGioiThieu);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.treeView1);
-            this.Name = "frmHuongDan";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmHuongDan";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmHuongDan_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
