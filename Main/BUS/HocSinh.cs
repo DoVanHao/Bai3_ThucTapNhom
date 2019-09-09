@@ -81,9 +81,9 @@ namespace BUS
         public DataTable LayThongTinLop()
         {
             string sql = "SELECT * FROM tblLop";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             da.Fill(dt);
             return dt;
         }

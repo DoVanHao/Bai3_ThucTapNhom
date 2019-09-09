@@ -18,8 +18,8 @@ namespace Main
         }
         private void GetFileAll(string tenfile)
         {
-            StreamReader doc = File.OpenText(tenfile);
-            string s = doc.ReadToEnd();
+            StreamReader text = File.OpenText(tenfile);
+            string text1 = text.ReadToEnd();
             txtGioiThieu.Text = s;
         }
 private void trViewGioiThieu_AfterSelect(object sender, TreeViewEventArgs e)

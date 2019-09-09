@@ -14,11 +14,11 @@ namespace BUS
         {
             string sql = "SELECT gv.MaGV, gv.HoTen, gv.GT, gv.NgaySinh, gv.DiaChi, gv.Luong, gv.SDT, mh.TenMon FROM tblGiaoVien gv, tblMonHoc mh where gv.MaMon = mh.MaMon";
             DataTable dt = new DataTable();
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             da.Fill(dt);
-            con.Close();
+            conn.Close();
             da.Dispose();
             return dt;
         }
@@ -26,11 +26,11 @@ namespace BUS
         {
             string sql = "SELECT gv.MaGV, gv.HoTen FROM tblGiaoVien gv, tblMonHoc mh where gv.MaMon = mh.MaMon and mh.TenMon=N'" + tenmon + "'";
             DataTable dt = new DataTable();
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             da.Fill(dt);
-            con.Close();
+            conn.Close();
             da.Dispose();
             return dt;
         }
