@@ -68,14 +68,14 @@ namespace BUS
         public void Xoa_HS(string MaHS)
         {
             string sql = "Xoa_HS";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@MaHS", MaHS);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-            con.Close();
+            conn.Close();
         }
         //lay thong tin lop
         public DataTable LayThongTinLop()

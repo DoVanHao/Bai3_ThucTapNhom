@@ -63,15 +63,15 @@ namespace BUS
         public void XoaCTGD(string malop, string mamon)
         {
             string sql = "XoaCTGD";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@malop", malop);
             cmd.Parameters.AddWithValue("@mamon", mamon);
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-            con.Close();
+            conn.Close();
         }
     }
 }

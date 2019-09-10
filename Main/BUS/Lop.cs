@@ -23,28 +23,13 @@ namespace BUS
             return dt;
         }
         //sua lop
-        public void Sua_Lop(string MaLop, string TenLop, string GVCN)
-        {
-            string sql = "Sua_Lop";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
-            cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@MaLop",MaLop);
-            cmd.Parameters.AddWithValue("@TenLop", TenLop);
-            cmd.Parameters.AddWithValue("@GVCN", GVCN);
-
-            cmd.ExecuteNonQuery();
-            cmd.Dispose();
-            con.Close();
-        }
+      
         public void ThemLop(string TenLop, string GVCN)
         {
             string sql = "ADD_Lop";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@TenLop", TenLop);
@@ -52,7 +37,7 @@ namespace BUS
 
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-            con.Close();
+            conn.Close();
         }
 
         // Xóa

@@ -13,7 +13,7 @@ namespace BUS
         SqlConnection cn = new SqlConnection();
         static public String getconnect()
         {
-            return (@"Data Source=DESKTOP-42NHODK;Initial Catalog=TruongTHPT;Integrated Security=True0");
+            return (@"Data Source=DESKTOP-42NHDK;Initial Catalog=TruongTHPT;Integrated Security=True0");
         }
     }
 }
