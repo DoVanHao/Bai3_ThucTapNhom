@@ -58,9 +58,9 @@ namespace BUS
         public void Sua_GV(string MaGV, string HoTen, string GT, string NgaySinh, string DiaChi, string SDT, string Luong, string Mon)
         {
             string sql = "Sua_GV";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
-            con.Open();
-            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@MaGV", MaGV);
@@ -74,7 +74,7 @@ namespace BUS
            
             cmd.ExecuteNonQuery();
             cmd.Dispose();
-            con.Close();
+            conn.Close();
         }
 
         //Xoa
@@ -94,9 +94,9 @@ namespace BUS
         public DataTable LayThongTinMonHoc()
         {
             string sql = "SELECT * FROM tblMonHoc";
-            SqlConnection con = new SqlConnection(ConnectDB.getconnect());
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
             DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
+            SqlDataAdapter da = new SqlDataAdapter(sql, conn);
             da.Fill(dt);
             return dt;
         }
