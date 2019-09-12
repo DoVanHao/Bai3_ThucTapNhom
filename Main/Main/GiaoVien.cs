@@ -52,6 +52,15 @@ namespace Main
             cbMonHoc.ValueMember = "MaMon";
             cbMonHoc.SelectedValue = "MaMon";
             chon = 0;
+            string sql = "Xoa_HS";
+            SqlConnection conn = new SqlConnection(ConnectDB.getconnect());
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@MaHS", MaHS);
+            cmd.ExecuteNonQuery();
+            cmd.Dispose();
+            conn.Close();
         }
 
         private void dgvGiaoVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -92,13 +101,7 @@ namespace Main
             SetNull();
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            Mo();
-            SetNull();
-            chon = 2;
-        }
-
+       
         private void txtTKGV_TextChanged(object sender, EventArgs e)
         {
             if (cbTKGV.Text == "Mã")
