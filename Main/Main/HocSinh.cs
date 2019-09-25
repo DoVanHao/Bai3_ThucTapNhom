@@ -84,5 +84,21 @@ namespace Main
             da.Fill(dt);
             return dt;
         }
+		
+		        public void KhoiTao()
+        {
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = false;
+            dtpNgaySinhGV.Enabled = false;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = false;
+        }
+
+        public void Mo()
+        {
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = true;
+            dtpNgaySinhGV.Enabled = true;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+        }
     }
 }
