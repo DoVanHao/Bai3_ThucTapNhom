@@ -85,6 +85,25 @@ namespace Main
             dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
         }
+		
+		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            for (int i = 0; i < cboTenMon.Items.Count; i++)
+            {
+                cboTenMon.SelectedIndex = i;
+                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
+            }           
+            for (int i = 0; i < cboTenGV.Items.Count; i++)
+            {
+                cboTenGV.SelectedIndex = i;
+                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
+            }
+            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+        }
+		
+		
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (selection == 1)
