@@ -12,8 +12,8 @@ namespace BUS
     {
         public DataTable Show(string tenlop)
         {
-            string sql = @"select mh.TenMon, gv.HoTen, NgayDay, Tiet 
-                                from tblCTGD ct, tblMonHoc mh, tblLop l, tblGiaoVien gv
+            string sql = @"select dbo.TenMon, gv.HoTen, NgayDay, Tiet 
+                                from dbo.CTGD ct, tblMonHoc mh, dbo.Lop l, tblGiaoVien gv
                                 where ct.MaLop=l.MaLop and ct.MaMon=mh.MaMon and ct.MaGV=gv.MaGV and l.tenlop='" + tenlop + "'";
             DataTable dt = new DataTable();
             SqlConnection con = new SqlConnection(ConnectDB.getconnect());

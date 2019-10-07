@@ -76,7 +76,7 @@ namespace BUS
         //tim kiem lop theo ma
         public DataTable TK_Ma_Lop(string MaLop)
         {
-            string sql = "SELECT * FROM tblLop WHERE MaLop like N'%' + @MaLop + '%'";
+            string sql = "SELECT * FROM dbo.Lop WHERE MaLop like N'%' + @MaLop + '%'";
             DataTable dt = new DataTable();
             SqlConnection con = new SqlConnection(ConnectDB.getconnect());
             con.Open();
