@@ -39,6 +39,17 @@ private void trViewGioiThieu_AfterSelect(object sender, TreeViewEventArgs e)
                 }
         }
   
+        private void Giao_Vien_Load(object sender, EventArgs e)
+        {
+            KhoiTao();
+            dgvGiaoVien.DataSource = gv.Show();
+
+            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
+            cbMonHoc.DisplayMember = "TenMon";
+            cbMonHoc.ValueMember = "MaMon";
+            cbMonHoc.SelectedValue = "MaMon";
+            chon = 0;
+        }
 
         private void frmHuongDan_FormClosed(object sender, FormClosedEventArgs e)
         {
