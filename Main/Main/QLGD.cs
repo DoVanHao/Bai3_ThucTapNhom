@@ -103,6 +103,18 @@ namespace Main
             txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
         }
 		
+		private void Giao_Vien_Load(object sender, EventArgs e)
+        {
+            KhoiTao();
+            dgvGiaoVien.DataSource = gv.Show();
+
+            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
+            cbMonHoc.DisplayMember = "TenMon";
+            cbMonHoc.ValueMember = "MaMon";
+            cbMonHoc.SelectedValue = "MaMon";
+            chon = 0;
+        }
+		
 		private void btnLuu_Click(object sender, EventArgs e)
         {
             if (selection == 1)
