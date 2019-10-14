@@ -100,6 +100,32 @@ namespace Main
                 SetNull();
             }
         }
+		
+		        public void Mo()
+        {
+            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = true;
+            dtpNgaySinhGV.Enabled = true;
+            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+        }
+
+        public void SetNull()
+        {
+            txtMaGV.Text = txtHoTenGV.Text = txtDiaChi.Text = txtLuong.Text = cbGTGV.Text = cbMonHoc.Text = cbTKGV.Text = txtTKGV.Text = txtSDT.Text = "";
+            dtpNgaySinhGV.Text = DateTime.Now.ToShortDateString();
+        }
+
+        private void Giao_Vien_Load(object sender, EventArgs e)
+        {
+            KhoiTao();
+            dgvGiaoVien.DataSource = gv.Show();
+
+            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
+            cbMonHoc.DisplayMember = "TenMon";
+            cbMonHoc.ValueMember = "MaMon";
+            cbMonHoc.SelectedValue = "MaMon";
+            chon = 0;
+        }
 		private void btnLuu_HS_Click(object sender, EventArgs e)
         {
             if(chon ==1)
