@@ -235,6 +235,47 @@ namespace Main
             dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
         }
-                
+        
+
+private void btnTim_Click(object sender, EventArgs e)
+        {
+            if (cboTenLop.Text != "")
+            {
+                dataGridView1.DataSource = ct.Show(cboTenLop.Text);
+            }
+        }
+
+        private void cboTenMon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cboTenGV.DataSource = gv.Show(cboTenMon.Text);
+            cboTenGV.DisplayMember = "HoTen";
+            cboTenGV.ValueMember = "MaGV";
+            cboTenGV.SelectedValue = "MaGV";
+            if (cboTenGV.Items.Count > 0)
+            {
+                cboTenGV.SelectedIndex = 0;
+            }
+        }
+
+        private void cboTenMon_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            for (int i = 0; i < cboTenMon.Items.Count; i++)
+            {
+                cboTenMon.SelectedIndex = i;
+                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
+            }           
+            for (int i = 0; i < cboTenGV.Items.Count; i++)
+            {
+                cboTenGV.SelectedIndex = i;
+                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
+            }
+            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+        }		
     }
 }
