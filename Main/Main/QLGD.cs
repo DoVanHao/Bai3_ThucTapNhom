@@ -49,88 +49,7 @@ namespace Main
             dataGridView1.DataSource = ct.Show(cboTenMon.Text);
             MessageBox.Show("Xóa dữ liệu thành công");
         }
-		        private void cboTenMon_TextChanged(object sender, EventArgs e)
-        {
-        }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            for (int i = 0; i < cboTenMon.Items.Count; i++)
-            {
-                cboTenMon.SelectedIndex = i;
-                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
-            }           
-            for (int i = 0; i < cboTenGV.Items.Count; i++)
-            {
-                cboTenGV.SelectedIndex = i;
-                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
-            }
-            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-        }
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            for (int i = 0; i < cboTenMon.Items.Count; i++)
-            {
-                cboTenMon.SelectedIndex = i;
-                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
-            }           
-            for (int i = 0; i < cboTenGV.Items.Count; i++)
-            {
-                cboTenGV.SelectedIndex = i;
-                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
-            }
-            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-        }
-		
-		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            for (int i = 0; i < cboTenMon.Items.Count; i++)
-            {
-                cboTenMon.SelectedIndex = i;
-                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
-            }           
-            for (int i = 0; i < cboTenGV.Items.Count; i++)
-            {
-                cboTenGV.SelectedIndex = i;
-                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
-            }
-            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-        }
-		
-		private void Giao_Vien_Load(object sender, EventArgs e)
-        {
-            KhoiTao();
-            dgvGiaoVien.DataSource = gv.Show();
-
-            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
-            cbMonHoc.DisplayMember = "TenMon";
-            cbMonHoc.ValueMember = "MaMon";
-            cbMonHoc.SelectedValue = "MaMon";
-            chon = 0;
-        }
-		
-		private void btnLuu_Click(object sender, EventArgs e)
-        {
-            if (selection == 1)
-            {
-                ct.ThemCTGD(cboTenLop.SelectedValue.ToString(), cboTenMon.SelectedValue.ToString(),
-                                cboTenGV.SelectedValue.ToString(), dateTimePicker1.Value, Convert.ToInt32(txtTiet.Text));
-                MessageBox.Show("Thêm dữ liệu thành công");
-            }
-            else if (selection == 2)
-            {
-                ct.SuaCTGD(cboTenLop.SelectedValue.ToString(), cboTenMon.SelectedValue.ToString(),
-                                cboTenGV.SelectedValue.ToString(), Convert.ToDateTime(dateTimePicker1.Text), Convert.ToInt32(txtTiet.Text));
-                MessageBox.Show("Sửa dữ liệu thành công");
-            }
-		
-		
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if (selection == 1)
@@ -149,17 +68,6 @@ namespace Main
             //MessageBox.Show(dateTimePicker1.Value.);
         }
 
-        private void Giao_Vien_Load(object sender, EventArgs e)
-        {
-            KhoiTao();
-            dgvGiaoVien.DataSource = gv.Show();
-
-            cbMonHoc.DataSource = gv.LayThongTinMonHoc();
-            cbMonHoc.DisplayMember = "TenMon";
-            cbMonHoc.ValueMember = "MaMon";
-            cbMonHoc.SelectedValue = "MaMon";
-            chon = 0;
-        }
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -180,21 +88,6 @@ namespace Main
             cboTenMon.Enabled = cboTenGV.Enabled = false;
         }
 
-		        public void KhoiTao()
-        {
-            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = false;
-            dtpNgaySinhGV.Enabled = false;
-            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = true;
-            btnLuu.Enabled = false;
-        }
-
-        public void Mo()
-        {
-            txtHoTenGV.Enabled = txtLuong.Enabled = txtSDT.Enabled = cbGTGV.Enabled = cbMonHoc.Enabled = txtDiaChi.Enabled = true;
-            dtpNgaySinhGV.Enabled = true;
-            btnSua.Enabled = btnThem.Enabled = btnXoa.Enabled = false;
-            btnLuu.Enabled = true;
-        }
         private void btnTim_Click(object sender, EventArgs e)
         {
             if (cboTenLop.Text != "")
@@ -235,47 +128,6 @@ namespace Main
             dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
             txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
         }
-        
-
-private void btnTim_Click(object sender, EventArgs e)
-        {
-            if (cboTenLop.Text != "")
-            {
-                dataGridView1.DataSource = ct.Show(cboTenLop.Text);
-            }
-        }
-
-        private void cboTenMon_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cboTenGV.DataSource = gv.Show(cboTenMon.Text);
-            cboTenGV.DisplayMember = "HoTen";
-            cboTenGV.ValueMember = "MaGV";
-            cboTenGV.SelectedValue = "MaGV";
-            if (cboTenGV.Items.Count > 0)
-            {
-                cboTenGV.SelectedIndex = 0;
-            }
-        }
-
-        private void cboTenMon_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            for (int i = 0; i < cboTenMon.Items.Count; i++)
-            {
-                cboTenMon.SelectedIndex = i;
-                if (cboTenMon.Text == dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()) break;
-            }           
-            for (int i = 0; i < cboTenGV.Items.Count; i++)
-            {
-                cboTenGV.SelectedIndex = i;
-                if (cboTenGV.Text == dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()) break;
-            }
-            dateTimePicker1.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            txtTiet.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-        }		
+                
     }
 }
